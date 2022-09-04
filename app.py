@@ -3,11 +3,7 @@ import pandas as pd
 from flask import Flask, request, jsonify, render_template
 import pickle
 
-dataset=pd.read_csv("50_Startups.csv")
-dataset["State"].unique()
-encoding = {}
-for i,j in enumerate(dataset["State"].unique()):
-  encoding[j] = i
+encoding = {'New York': 0, 'California': 1, 'Florida': 2}
 
 app = Flask(__name__)
 model = pickle.load(open("model.pkl","rb"))
